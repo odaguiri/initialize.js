@@ -3,7 +3,7 @@ Organize your javascript doing components
 
 1. import javascript
 ```HTML
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="initialize.js"></script>
 ```
 
 2. create component and everytime, you will need to reference to your element
