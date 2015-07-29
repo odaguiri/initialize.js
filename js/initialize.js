@@ -1,25 +1,24 @@
 +function ($) { "use strict";
   function InitializeJS() {
-    this._$document = $(document)
-    this._$body     = $(document.body)
+    window.onload = this.listen;
   }
 
-  InitializeJS.prototype.listen = function () {
-    this._$document.ready($('[data-initialize]').each($.proxy(this._initialize, this)))
-  }
+  InitializeJS.prototype.listen = function() {
+    var elements = document.querySelectorAll('[data-initialize]');
+    var i;
+    for (i = 0; i < elements.length; i++) {
+      var element = elements[i];
+      var klasses = element.getAttribute('data-initialize').split(' ');
 
-  InitializeJS.prototype._initialize = function (i, el) {
-    var $el = $(el)
-    var klasses = $el.data('initialize').split(' ')
-
-    for(var i=0; i < klasses.length;i++) {
-      try {
-        new(eval(klasses[i]))($el)
-      } catch(error) {
-        console.warn("initialize.js::warn " + error)
+      for(var n=0; n < klasses.length;n++) {
+        try {
+          new(eval(klasses[n]))(element);
+        } catch(error) {
+          console.warn("initialize.js::warn " + error)
+        }
       }
     }
-  }
+  };
 
-  new InitializeJS().listen()
+  new InitializeJS();
 }(jQuery)
