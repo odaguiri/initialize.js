@@ -1,24 +1,29 @@
-+function ($) { "use strict";
-  function InitializeJS() {
-    window.onload = this.listen;
-  }
-
-  InitializeJS.prototype.listen = function() {
-    var elements = document.querySelectorAll('[data-initialize]');
+var InitializeJS = (function(window, document){
+  // lazy component setter
+  function allElements(){
     var i;
-    for (i = 0; i < elements.length; i++) {
-      var element = elements[i];
-      var klasses = element.getAttribute('data-initialize').split(' ');
+    var elements = document.querySelectorAll('[data-initialize]');
 
-      for(var n=0; n < klasses.length;n++) {
-        try {
-          new(eval(klasses[n]))(element);
-        } catch(error) {
-          console.warn("initialize.js::warn " + error)
-        }
+    for (i = 0; i < elements.length; i++) {
+      element(elements[i]);
+    }
+  };
+
+  function element(el){
+    var components = el.getAttribute('data-initialize').split(' ');
+
+    for(var n=0; n < components.length;n++) {
+      try {
+        new(eval(components[n]))(el);
+      } catch(error) {
+        console.warn("initialize.js::warn " + error)
       }
     }
   };
 
-  new InitializeJS();
-}(jQuery)
+  return {
+    element: element,
+    allElements: allElements
+  };
+
+})(window, document);
