@@ -1,19 +1,22 @@
 # initialize.js
 Organize your javascript doing components
 
-1. import javascript
+Import javascript and load it
 ```HTML
-  <script src="initialize.js"></script>
+  <script src="initialize.min.js"></script>
+  <script>window.load = InitializeJS.allElements();</script>
 ```
 
-2. create component and everytime, you will need to reference to your element
+Create your component file "opacity.js" (yeah try to default your file with class)
 ```Javascript
-function MyComponent(el) {
-  $(el).append('<span>Custom Component Append</span>');
+function Opacity(el) {
+  el.style.opacity = el.getAttribute('data-opacity-level');
 }
 ```
 
-3. set data-attribute, if you want to have more components in the same element, you can! see the examples on this repository
+Now the magic :)
 ```HTML
-  <div data-initialize="MyComponent">something will happen here</div>
+  <div data-initialize="Opacity" data-opacity-level="0.7">something will happen here</div>
 ```
+
+ps: This repository have an example
