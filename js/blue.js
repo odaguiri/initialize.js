@@ -1,3 +1,3 @@
 function Blue(el) {
-  $(el).css('color', 'blue');
+  el.style.color = 'blue';
 }
