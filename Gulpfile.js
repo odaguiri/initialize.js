@@ -1,36 +1,33 @@
-// nodejs gulp plugins
+// gulp bootstrap
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 
-// dir
-var files = "./dist/*.js";
+// default dir
+var dir = "./dist/initialize.js";
 
-// set new gulp task as lint
+// jshint task
 gulp.task('lint', function(){
-  // load files to gulp.src and use pipe to run jshint
-  gulp.src(files)
+  return gulp.src(dir)
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
 
-// set new gulp task as dist
+// dist task
 gulp.task('dist', function(){
-  // load files to gulp.src and rename all min files with uglify
-  // set all min files to build
-  gulp.src(files)
+  gulp.src(dir)
     .pipe(concat('./dist'))
-    .pipe(rename('dist.min.js'))
+    .pipe(rename('initialize.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./dist'));
 });
 
+// watch task
 gulp.task('watch', function() {
-  gulp.watch(files, function(event) {
-    gulputil.log('File '+event.path+' was '+event.type+', running tasks...');
-    gulp.run('dist');
-    gulp.run('lint', 'dist');
-  });
+  gulp.watch(dir, ['lint', 'dist']);
 });
+
+// default task
+gulp.task('default', ['lint', 'dist', 'watch']);
