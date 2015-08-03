@@ -1,0 +1,22 @@
+{
+  "name": "initialize.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/odaguiri/initialize.js",
+  "description": "Initialize javascript components",
+  "main": "src/initialize.js",
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "modules",
+    "components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
