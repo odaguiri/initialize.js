@@ -1,25 +1,28 @@
-+function ($) { "use strict";
-  function InitializeJS() {
-    this._$document = $(document)
-    this._$body     = $(document.body)
-  }
+var InitializeJS = (function(window, document){
+  // lazy component setter
+  function allElements(){
+    var i;
+    var elements = document.querySelectorAll('[data-initialize]');
+    for (i = 0; i < elements.length; i++) {
+      element(elements[i]);
+    }
+  };
 
-  InitializeJS.prototype.listen = function () {
-    this._$document.ready($('[data-initialize]').each($.proxy(this._initialize, this)))
-  }
+  function element(el){
+    var components = el.getAttribute('data-initialize').split(' ');
 
-  InitializeJS.prototype._initialize = function (i, el) {
-    var $el = $(el)
-    var klasses = $el.data('initialize').split(' ')
-
-    for(var i=0; i < klasses.length;i++) {
+    for(var n=0; n < components.length;n++) {
       try {
-        new(eval(klasses[i]))($el)
+        new(eval(components[n]))(el);
       } catch(error) {
         console.warn("initialize.js::warn " + error)
       }
     }
-  }
+  };
 
-  new InitializeJS().listen()
-}(jQuery)
+  return {
+    element: element,
+    allElements: allElements
+  };
+
+})(window, document);

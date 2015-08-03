@@ -1,0 +1,33 @@
+{
+  "name": "initialize.js",
+  "version": "1.0.0",
+  "description": "Organize your javascript doing components",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-watch": "^4.3.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.3.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odaguiri/initialize.js.git"
+  },
+  "author": "Odaguiri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/odaguiri/initialize.js/issues"
+  },
+  "homepage": "https://github.com/odaguiri/initialize.js#readme"
+}
