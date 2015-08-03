@@ -6,7 +6,7 @@ var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 
 // default dir
-var dir = "./dist/initialize.js";
+var dir = "./src/initialize.js";
 
 // jshint task
 gulp.task('lint', function(){
@@ -15,19 +15,19 @@ gulp.task('lint', function(){
     .pipe(jshint.reporter('default'));
 });
 
-// dist task
-gulp.task('dist', function(){
+// beautify task
+gulp.task('beautify', function(){
   gulp.src(dir)
-    .pipe(concat('./dist'))
+    .pipe(concat('./src'))
     .pipe(rename('initialize.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./src'));
 });
 
 // watch task
 gulp.task('watch', function() {
-  gulp.watch(dir, ['lint', 'dist']);
+  gulp.watch(dir, ['lint', 'beautify']);
 });
 
 // default task
-gulp.task('default', ['lint', 'dist', 'watch']);
+gulp.task('default', ['lint', 'beautify', 'watch']);

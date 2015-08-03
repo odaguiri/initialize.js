@@ -1,9 +1,9 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 
 .container {
-  width: 500px;
+  width: 600px;
   margin: 0 auto;
   font-size: 25px;
 }

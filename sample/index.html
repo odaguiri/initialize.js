@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>initialize.js</title>
+  <link rel="stylesheet" href="css/application.css">
+</head>
+<body>
+  <div class="container">
+    <h1>initialize.js</h1>
+    <p>Organize your website, doing components!</p>
+    <ul>
+      <li data-initialize="Color Opacity" data-opacity-level="0.7" data-color="blue">#{Components: Color and Opacity}</li>
+      <li data-initialize="Color" data-color="red">#{Component: Color}</li>
+    </ul>
+  </div>
+
+  <!-- components -->
+  <script src="js/color.js"></script>
+  <script src="js/opacity.js"></script>
+
+  <!-- initializer -->
+  <script src="../src/initialize.js"></script>
+
+  <script>
+    // load on all scripts
+    window.load = InitializeJS.allElements();
+  </script>
+</body>
+</html>
