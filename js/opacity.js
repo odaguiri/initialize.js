@@ -1,3 +1,3 @@
 function Opacity(el) {
-  $(el).css('opacity', $(el).data('opacity-level'));
+  el.style.opacity = el.getAttribute('data-opacity-level');
 }
